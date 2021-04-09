@@ -1,0 +1,1 @@
+- install gatsby-source-strapi and uncomment it in the gatsby-config.js

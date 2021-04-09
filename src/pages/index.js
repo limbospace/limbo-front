@@ -1,29 +1,36 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React from "react"
+import { graphql } from "gatsby"
+import Helmet from "react-helmet"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Header from "../components/header"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+const IndexPage = (props) => {
+  return (
+    <>
+      <Helmet>
+        <title>{props.data.site.siteMetadata?.title || "Galerie Limbo"}</title>
+        <meta name="author" content={props.data.site.siteMetadata?.description} />
+        <meta name="description" content={props.data.site.siteMetadata?.description} />
+        <meta name="keywords" content={props.data.site.siteMetadata?.keywords} />
+      </Helmet>
+      <Header>
+      </Header>
+      <div>Hello World</div>
+    </>
+  )
 
+}
 export default IndexPage
+
+export const query = graphql`
+  query{
+    site {
+      siteMetadata {
+        title
+        author
+        description
+        keywords
+      }
+    }
+  }
+`
