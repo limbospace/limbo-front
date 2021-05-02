@@ -1,2 +1,64 @@
-.header
+header
+  position: sticky
+  display: flex
+  justify-content: space-between
+  height: $header-height
+  width: 100%
+  padding: 0 $marg-size 0 $marg-size
+  background-color: $bg-color
+  z-index: 100
+  transition: 0.3s
 
+.displayed
+  top: 0px
+  transition: 0.3s
+
+
+.hidden
+  top: calc(0px - #{$header-height})
+  transition: 0.3s
+
+
+.page-link-white
+  font-size: 2.4rem
+  font-weight: 500
+  color: inherit
+  width: $col-2
+  text-align: center
+  line-height: 9.6rem
+  text-decoration: none
+  color: #FFFFFF
+  opacity: 0.8
+
+.page-link-black
+  font-size: 2.4rem
+  font-weight: 500
+  color: inherit
+  width: $col-2
+  text-align: center
+  line-height: 9.6rem
+  text-decoration: none
+  color: #000000
+  opacity: 0.8
+
+.page-link:nth-child(1)
+  margin-left: $col-1
+
+.page-link:nth-child(3)
+  margin-right: $col-1
+
+.logo-black
+  background-image: url("../assets/images/logo_black.svg")
+  background-position: center
+  background-repeat: no-repeat
+  height: 100%
+  width: $col-6
+  opacity: 0.8
+
+.logo-white
+  background-image: url("../assets/images/logo_white.svg")
+  background-position: center
+  background-repeat: no-repeat
+  height: 100%
+  width: $col-6
+  opacity: 0.8

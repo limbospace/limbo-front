@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Template`,
-    description: `my gatsby template`,
+    title: `Galerie Limbo`,
+    description: ``,
     keywords:``,
     author: `@antbarras`,
   },
@@ -32,13 +32,14 @@ module.exports = {
         additionalData: `@use "${__dirname}/src/styles/variables" as *`,
       }
     },
-    // {
-    //   resolve: "gatsby-source-strapi",
-    //   options: {
-    //     apiURL: process.env.API_URL || "http://localhost:1337",
-    //     queryLimit: 1000,
-    //     contentTypes: []
-    //   }
-    // }
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.API_URL || "http://localhost:1337",
+        queryLimit: 1000,
+        contentTypes: [`exposition`]
+      }
+    }
   ],
+
 }

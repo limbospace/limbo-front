@@ -1,1 +1,12 @@
-- install gatsby-source-strapi and uncomment it in the gatsby-config.js
+- share button
+- image resizing
+- padding and height in page
+- gestion des couleurs
+
+
+
+- en fonction de mise en page, suprpimer option grandes images d'artiste
+- key problem
+- credits images etc
+
+- dans la liste, vérifier classement par date et pas par index

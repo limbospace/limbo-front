@@ -1,0 +1,87 @@
+.exposition-container
+  position: relative
+  width: 100%
+  padding: $vert-gap-M $marg-size $vert-gap-L $marg-size
+  margin-bottom: $vert-gap-L
+
+  .info-container
+    margin: 0 0 0 0
+
+    .title-container
+      position: sticky
+      top: calc(#{$vert-gap-M} + #{$header-height})
+      z-index: 10
+
+      .title
+        position: relative
+        display: block
+        width: $col-12
+        font-size: 16rem
+        line-height: 24rem
+        text-align: center
+        text-transform: uppercase
+      .date
+        position: relative
+        display: block
+        width: $col-12
+        font-size: 8rem
+        line-height: 12rem
+        text-align: center
+      .address
+        position: relative
+        display: block
+        font-size: 4rem
+        line-height: 6rem
+        text-align: center
+
+
+    .main-image
+      margin-top: 20vh
+      //42 rem is the height of the title
+      margin-bottom: calc(42rem + #{$vert-gap-L})
+
+
+  .description-container
+    margin: $vert-gap-S 0 $vert-gap-L 0
+
+    .description
+      position: sticky
+      top: calc(#{$header-height} + #{$vert-gap-M})
+      margin-left: $col-3
+      width: $col-6
+    div
+      height: $vert-gap-XL
+
+
+  .artist-container
+    margin-bottom: $vert-gap-L
+
+    .artist-name
+      position: sticky
+      top: calc(#{$header-height} + #{$vert-gap-M})
+      font-size: 4rem
+      line-height: 6rem
+      width: $col-7
+      margin-bottom: $vert-gap-M
+      z-index: 10
+    .artist-bio
+      font-size: 2rem
+      line-height: 2.4rem
+      width: $col-6
+      margin-left: $col-5
+      margin-bottom: $vert-gap-M
+    .artist-image-small
+      width: $col-6
+      margin-left: $col-5
+      margin-bottom: $vert-gap-M
+
+
+  .poster-container
+    width: $col-4
+    margin-left: $col-4
+    margin-bottom: $vert-gap-M
+    h4
+      font-size: 2.8rem
+      line-height: 3.2rem
+    h4:nth-child(n+4)
+      text-align: right
