@@ -3,6 +3,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import * as expositionActiveStyles from "./exposition_active.module.sass"
 import * as expositionStyles from "../templates/exposition.module.sass"
+import { Link } from "gatsby"
 
 
 const ExpositionActive = (props) => {
@@ -19,9 +20,14 @@ const ExpositionActive = (props) => {
     let currentDate = new Date()
     let startDate = Date.parse(currentExpo.start_date)
     let endDate = Date.parse(currentExpo.end_date)
+    console.log(currentExpo.title)
+    console.log(currentDate)
+    console.log(startDate)
+    console.log(endDate)
 
 
-    if (currentDate <= endDate) {//if the exhibition is not finished yed
+    if (currentDate <= endDate) {//if the exhibition is not finished yet
+
       let formattedDate
       if (startDate !== endDate) {
         formattedDate = `${currentExpo.start_date.substring(8, 10)}.${currentExpo.start_date.substring(5, 7)} - ${currentExpo.end_date.substring(8, 10)}.${currentExpo.end_date.substring(5, 7)}.${currentExpo.end_date.substring(2, 4)}`
@@ -78,15 +84,18 @@ const ExpositionActive = (props) => {
         <div style={expositionColorStyles}>
           {formattedArtists}
         </div>
-        <div className={expositionStyles.posterContainer}>
-          <GatsbyImage image={getImage(currentExpo.poster)} alt={""} className={expositionStyles.posterImage} />
-          <h4>{currentExpo.title}</h4>
-          <h4>{formattedDate}</h4>
-          {artistsList}
-        </div>
+        <Link className={expositionStyles.posterLinkWrapper} to={`/${currentExpo.URL}`}>
+          <div className={expositionStyles.posterContainer}>
+            <GatsbyImage image={getImage(currentExpo.poster)} alt={""} className={expositionStyles.posterImage} />
+            <h4>{currentExpo.title}</h4>
+            <h4>{formattedDate}</h4>
+            {artistsList}
+          </div>
+        </Link>
       </div>)
+      break
     }
-    break
+
     //as it's made to have only one active exhibition at the time
 
   }

@@ -50,6 +50,7 @@ export const query = graphql`
         background_color_HEX
         start_date
         end_date
+        URL
         poster{
           childImageSharp {
               gatsbyImageData(

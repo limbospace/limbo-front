@@ -1,8 +1,11 @@
+- revoir mise en page artiste nom
+
+
 - share button
 - image resizing
 - padding and height in page
 - gestion des couleurs
-
+- mouse in archive left-right
 
 
 - en fonction de mise en page, suprpimer option grandes images d'artiste

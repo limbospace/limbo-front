@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Helmet from "react-helmet"
 
 import Header from "../components/header"
@@ -86,12 +86,14 @@ const ExpositionPage = (props) => {
         <div style={expositionColorStyles}>
           {formattedArtists}
         </div>
-        <div className={expositionStyles.posterContainer}>
-          <GatsbyImage image={getImage(exposition.poster)} alt={""} className={expositionStyles.posterImage} />
-          <h4>{exposition.title}</h4>
-          <h4>{formattedDate}</h4>
-          {artistsList}
-        </div>
+        <Link className={expositionStyles.posterLinkWrapper} to={`/${exposition.URL}`}>
+          <div className={expositionStyles.posterContainer}>
+            <GatsbyImage image={getImage(exposition.poster)} alt={""} className={expositionStyles.posterImage} />
+            <h4>{exposition.title}</h4>
+            <h4>{formattedDate}</h4>
+            {artistsList}
+          </div>
+        </Link>
       </div>
     </>
   )
@@ -109,6 +111,7 @@ export const query = graphql`
       background_color_HEX
       start_date
       end_date
+      URL
               poster{
           childImageSharp {
               gatsbyImageData(

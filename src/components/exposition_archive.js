@@ -1,5 +1,7 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
+
 
 import * as expositionArchiveStyles from "./exposition_archive.module.sass"
 import * as expositionStyles from "../templates/exposition.module.sass"
@@ -27,15 +29,17 @@ const ExpositionArchive = (props) => {
       for (let currentArtist of currentExpo.artist) {
         artistsList.push(<h4 key={currentArtist.id}>{currentArtist.name}</h4>)
       }
-
+      console.log(`/${currentExpo.URL}`)
 
       archiveExpositions.push(<div key={currentExpo.strapiId} className={expositionStyles.expositionContainer}>
-        <div className={expositionStyles.posterContainer}>
-          <GatsbyImage image={getImage(currentExpo.poster)} alt={""} className={expositionStyles.posterImage} />
-          <h4>{currentExpo.title}</h4>
-          <h4>{formattedDate}</h4>
-          {artistsList}
-        </div>
+        <Link className={expositionStyles.posterLinkWrapper} to={`/${currentExpo.URL}`}>
+          <div className={expositionStyles.posterContainer}>
+            <GatsbyImage image={getImage(currentExpo.poster)} alt={""} className={expositionStyles.posterImage} />
+            <h4>{currentExpo.title}</h4>
+            <h4>{formattedDate}</h4>
+            {artistsList}
+          </div>
+        </Link>
       </div>)
     }
   }
