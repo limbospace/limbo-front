@@ -3,12 +3,22 @@ $bg-color: #EEEEEE
 $font-color: #666666
 
 //layout sizes
-$marg-size: 24px
-$gutt-size: 16px
+$marg-size: 12px
+@media (min-width: 768px) and (min-height: 400px)
+  $marg-size: 20px
+  $gutt-size: 12px
+@media (min-width: 1024px)
+  $marg-size: 24px
+  $gutt-size: 16px
+
+$gutt-size: 8px
+$vert-gap-XXL: 64rem
 $vert-gap-XL: 32rem
 $vert-gap-L: 16rem
 $vert-gap-M: 8rem
 $vert-gap-S: 4rem
+$vert-gap-XS: 2rem
+
 
 
 //margin for the main content

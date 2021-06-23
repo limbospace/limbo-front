@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { graphql, Link } from "gatsby"
 import Helmet from "react-helmet"
+import ReactMarkdown from "react-markdown"
+
 
 import Header from "../components/header"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -29,12 +31,16 @@ const ExpositionPage = (props) => {
 
 
   let formattedImageFirst = []
+  let formattedImageSecond = []
   let formattedImagesRest = []
   for (let i = 0; i < exposition.image.length; i++) {
     if (i == 0 && exposition.image.length > 0) {
       formattedImageFirst.push(<GatsbyImage image={getImage(exposition.image[i].image_file)} alt={""} className={expositionStyles.mainImage} />)
     }
-    if (i > 0 && exposition.image.length > 1) {
+    if (i == 1 && exposition.image.length > 0) {
+      formattedImageSecond.push(<GatsbyImage image={getImage(exposition.image[i].image_file)} alt={""} className={expositionStyles.mainImage} />)
+    }
+    if (i > 1 && exposition.image.length > 2) {
       formattedImagesRest.push(<GatsbyImage image={getImage(exposition.image[i].image_file)} alt={""} className={expositionStyles.mainImage} />)
     }
   }
@@ -52,8 +58,8 @@ const ExpositionPage = (props) => {
     formattedArtists.push(
       <div className={expositionStyles.artistContainer} key={currentArtist.id}>
         <h3 className={expositionStyles.artistName}>{currentArtist.name}</h3>
-        <p className={expositionStyles.artistBio}>{currentArtist.biography}</p>
-        {artistImages}
+        {/*<p className={expositionStyles.artistBio}>{currentArtist.biography}</p>*/}
+        {/*{artistImages}*/}
       </div>
     )
   }
@@ -79,11 +85,16 @@ const ExpositionPage = (props) => {
           {/*<GatsbyImage image={getImage(exposition.image[0].image_file)} alt={""} className={expositionStyles.mainImage} />*/}
         </div>
         <div className={expositionStyles.descriptionContainer} style={expositionColorStyles}>
-          <p className={expositionStyles.description}>{exposition.description}</p>
+          <ReactMarkdown className={expositionStyles.description}>{exposition.description}</ReactMarkdown>
           <div></div>
-          {formattedImagesRest}
         </div>
-        <div style={expositionColorStyles}>
+        {formattedImageSecond}
+        <div className={expositionStyles.descriptionContainer} style={expositionColorStyles}>
+          <ReactMarkdown className={expositionStyles.description}>{exposition.indications}</ReactMarkdown>
+          <div></div>
+        </div>
+        {formattedImagesRest}
+        <div className={expositionStyles.artistsContainer} style={expositionColorStyles}>
           {formattedArtists}
         </div>
         <Link className={expositionStyles.posterLinkWrapper} to={`/${exposition.URL}`}>
@@ -91,7 +102,7 @@ const ExpositionPage = (props) => {
             <GatsbyImage image={getImage(exposition.poster)} alt={""} className={expositionStyles.posterImage} />
             <h4>{exposition.title}</h4>
             <h4>{formattedDate}</h4>
-            {artistsList}
+            {/*{artistsList}*/}
           </div>
         </Link>
       </div>
@@ -112,6 +123,7 @@ export const query = graphql`
       start_date
       end_date
       URL
+      indications
               poster{
           childImageSharp {
               gatsbyImageData(
@@ -127,7 +139,6 @@ export const query = graphql`
           image_file {
             childImageSharp {
               gatsbyImageData(
-                width: 2000
                 layout: CONSTRAINED
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, JPG]
@@ -144,7 +155,6 @@ export const query = graphql`
               image_file {
                 childImageSharp {
                   gatsbyImageData(
-                    width: 2000
                     layout: CONSTRAINED
                     placeholder: BLURRED
                     formats: [AUTO, WEBP, JPG]

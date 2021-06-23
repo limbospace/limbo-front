@@ -51,6 +51,7 @@ export const query = graphql`
         start_date
         end_date
         URL
+        indications
         poster{
           childImageSharp {
               gatsbyImageData(

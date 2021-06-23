@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import * as expositionActiveStyles from "./exposition_active.module.sass"
 import * as expositionStyles from "../templates/exposition.module.sass"
 import { Link } from "gatsby"
 
@@ -78,7 +77,6 @@ const ExpositionActive = (props) => {
         </div>
         <div className={expositionStyles.descriptionContainer} style={expositionColorStyles}>
           <p className={expositionStyles.description}>{currentExpo.description}</p>
-          <div></div>
           {formattedImagesRest}
         </div>
         <div style={expositionColorStyles}>
@@ -89,7 +87,7 @@ const ExpositionActive = (props) => {
             <GatsbyImage image={getImage(currentExpo.poster)} alt={""} className={expositionStyles.posterImage} />
             <h4>{currentExpo.title}</h4>
             <h4>{formattedDate}</h4>
-            {artistsList}
+            {/*{artistsList}*/}
           </div>
         </Link>
       </div>)
