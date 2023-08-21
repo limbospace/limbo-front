@@ -3,12 +3,23 @@ import { Link } from "gatsby"
 
 import * as headerStyles from "./header.module.sass"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import LogoBlackSVG from "../assets/images/logo_black.svg";
+import LogoWhiteSVG from "../assets/images/logo_white.svg";
+
 
 const Header = (props) => {
-  // function reload() {
-  //   navigate(`/`)
-  //   navigate(0)
-  // }
+  const [pageWidth, setPageWidth] = useState(0)
+
+  useEffect(() => {
+    setPageWidth(window.innerWidth)
+    window.addEventListener("resize", () => {
+      setPageWidth(window.innerWidth)
+    })
+    return () => {
+      window.removeEventListener("resize", () => {
+      })
+    }
+  }, [])
 
 
   function hexToRgb(hex) {
@@ -30,8 +41,10 @@ const Header = (props) => {
 
   const headerComponentRef = useRef(null)
   let [headerClassName, setHeaderClassName] = useState(headerStyles.displayed)
-  let [logoClassName, setLogoClassName] = useState(headerStyles.logoBlack)
   let [linkClassName, setLinkClassName] = useState(headerStyles.pageLinkBlack)
+  let [logoBlackClassName, setLogoBlackClassName] = useState(headerStyles.logoDisplayed)
+  let [logoWhiteClassName, setLogoWhiteClassName] = useState(headerStyles.logoHidden)
+
 
 
   useEffect(() => {
@@ -50,23 +63,26 @@ const Header = (props) => {
     let currentColor = hexToRgb(props.headerStyles.color)
     if (currentColor != null) {
       if(getBrightness(currentColor)>128){
-        setLogoClassName(headerStyles.logoWhite)
+        setLogoBlackClassName(headerStyles.logoHidden)
+        setLogoWhiteClassName(headerStyles.logoDisplayed)
         setLinkClassName(headerStyles.pageLinkWhite)
       }else{
-        setLogoClassName(headerStyles.logoBlack)
+        setLogoBlackClassName(headerStyles.logoDisplayed)
+        setLogoWhiteClassName(headerStyles.logoHidden)
         setLinkClassName(headerStyles.pageLinkBlack)
       }
     }
   })
 
+  let expositionText= pageWidth >= 720 ? "Expositions" : "Expos"
+
   return (
-    // <div className={headerStyles.header} onClick={reload}>
     <header ref={headerComponentRef} className={headerClassName} style={props.headerStyles}>
 
-      <Link to={`/`} className={linkClassName}>Archive</Link>
-      {/*<img src={'../assets/images/logo_black.svg'}/>*/}
-      <Link to={`/`} className={logoClassName}></Link>
-      <Link to={`/`} className={linkClassName}>Info</Link>
+      <Link to={`/`} className={linkClassName}>{expositionText}</Link>
+      <Link to={`/`} className={headerStyles.logo}><LogoBlackSVG className={logoBlackClassName}/><LogoWhiteSVG className={logoWhiteClassName}/></Link>
+      <Link to={`/info`} className={linkClassName}>Info</Link>
+
     </header>
   )
 }

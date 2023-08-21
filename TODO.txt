@@ -1,4 +1,4 @@
-- revoir mise en page artiste nom
+- interlignage
 
 
 - share button
@@ -13,3 +13,15 @@
 - credits images etc
 
 - dans la liste, vérifier classement par date et pas par index
+
+
+
+
+
+
+
+I REMOVED FOR THE SINGLE PAGE:
+ARTISTS IMAGES AND DESC
+EXPOSITION CONTAINER MARGIN BOTTOM
+LATERAL INFORMATION ON TOPBAR
+ADDED AUTOMATIC REDIRECTION

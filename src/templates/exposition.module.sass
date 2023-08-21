@@ -1,20 +1,23 @@
+.exposition-container:last-child
+  padding-bottom: $vert-gap-S
 .exposition-container
   position: relative
   width: 100%
-  padding: $vert-gap-M $marg-size $vert-gap-L $marg-size
-  margin-bottom: $vert-gap-L
+  padding: $vert-gap-S $marg-size $vert-gap-S $marg-size
+  //margin-bottom: $vert-gap-L
 
   .info-container
     margin: 0 0 0 0
 
     .title-container
       position: sticky
-      top: calc(0px)
+      top: calc(#{$header-height})
+      z-index: 10
       @media (min-width: 768px) and (min-height: 400px)
         top: calc(#{$vert-gap-S} + #{$header-height})
       @media (min-width: 1024px)
         top: calc(#{$vert-gap-M} + #{$header-height})
-      z-index: 10
+        
 
       .title
         position: relative
@@ -22,59 +25,92 @@
         width: $col-12
         font-size: 5.2rem
         font-weight: 600
+        line-height: 7.8rem
+        text-transform: uppercase
+        text-align: center
         @media (min-width: 768px) and (min-height: 400px)
           font-size: 8rem
-          font-weight: 500
+          font-weight: 600
+          line-height: 12rem
         @media (min-width: 1024px)
+          font-size: 12rem
+          font-weight: 500
+          line-height: 16rem
+        @media (min-width: 1400px)
           font-size: 16rem
           font-weight: 500
-        line-height: 24rem
-        text-align: center
-        text-transform: uppercase
-
+          line-height: 22rem
 
       .date
         position: relative
         display: block
         width: $col-12
         font-size: 3.6rem
+        line-height: 5.4rem
+        text-align: center
         @media (min-width: 768px) and (min-height: 400px)
           font-size: 4rem
+          line-height: 6rem
         @media (min-width: 1024px)
           font-size: 8rem
-        line-height: 12rem
-        text-align: center
+          line-height: 12rem
+          
 
       .address
         position: relative
         display: block
         font-size: 2.4rem
+        line-height: 3.6rem
+        text-align: center
         @media (min-width: 768px) and (min-height: 400px)
           font-size: 3.2rem
+          line-height: 4.8rem
         @media (min-width: 1024px)
           font-size: 4rem
-        line-height: 6rem
-        text-align: center
+          line-height: 6rem
+          
 
-
-    .main-image
-      margin-top: 20vh
-      height: 100%
+  .main-image
+    margin-top: 20vh
+    width: 100vw
+    margin-left: calc(0px - #{$marg-size})
+    height: 100%
       //42 rem is the height of the title
-      margin-bottom: calc(42rem + #{$vert-gap-L})
+    margin-bottom: calc(42rem + #{$vert-gap-L})
 
-    .second-image
+  .big-image-1
+    width: 100vw
+    margin-left: calc(0px - #{$marg-size})
+    margin-top: 0
+    margin-bottom: $vert-gap-M
 
+  .big-image-2
+    width: 100vw
+    margin-left: calc(0px - #{$marg-size})
+    margin-top: $vert-gap-M
+    margin-bottom: $vert-gap-M
 
   .description-container
-    margin: $vert-gap-L 0 $vert-gap-XL 0
+    margin: $vert-gap-M 0 $vert-gap-M 0
+    height: 100%
 
     .description
       position: sticky
       top: calc(#{$header-height} + #{$vert-gap-M})
       margin-left: 0
       width: $col-12
-      @media (min-width: 768px) and (min-height: 400px)
+      @media (min-width: 640px) and (min-height: 400px)
+        margin-left: $col-2
+        width: $col-8
+      @media (min-width: 1024px)
+        margin-left: $col-3
+        width: $col-6
+
+    .indication
+      position: relative
+      margin-left: 0
+      width: $col-12
+      @media (min-width: 640px) and (min-height: 400px)
         margin-left: $col-2
         width: $col-8
       @media (min-width: 1024px)
@@ -83,6 +119,44 @@
 
     div
       height: $vert-gap-L
+
+  .gallery-container
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+    width: $col-12
+    margin-top: $vert-gap-L
+    margin-bottom: $vert-gap-M
+
+  .gallery-element
+    width: $col-5
+    margin: $gutt-size
+    margin-bottom: $vert-gap-L
+    @media (min-width: 1024px)
+      width: $col-3
+  .gallery-element-width
+    width: $col-12
+    margin: $gutt-size
+    margin-top: $gutt-size
+    margin-bottom: $vert-gap-L
+    @media (min-width: 1024px)
+      width: $col-6
+      margin-left: $col-3
+      margin-right: $col-3
+  .gallery-image
+    width: 100%
+
+  .gallery-artist-name
+    height: 4rem
+    opacity: 0.8
+
+  .gallery-artwork-title
+    padding-top: 1.2rem
+    opacity: 0.8
+
+  .gallery-artwork-materials
+    font-weight: 200
+    opacity: 0.8
 
   .artists-container
     display: flex
@@ -105,11 +179,11 @@
         font-size: 3.2rem
         @media (min-width: 768px) and (min-height: 400px)
           font-size: 4rem
-        line-height: 6rem
-        width: $col-12
-        text-align: center
+          line-height: 6rem
+          width: $col-12
+          text-align: center
         //margin-bottom: $vert-gap-M
-        z-index: 10
+          z-index: 10
 
       .artist-bio
         font-size: 2rem
@@ -123,20 +197,28 @@
         margin-left: $col-5
         margin-bottom: $vert-gap-M
 
-
   .poster-link-wrapper
     text-decoration: none
     color: inherit
-    width: $col-4
 
     .poster-container
-      width: $col-4
-      margin-left: $col-4
-      margin-bottom: $vert-gap-M
+      position: relative
+      margin-left: $col-2
+      width: $col-8
+      @media (min-width: 640px) and (min-height: 400px)
+        margin-left: $col-2
+        width: $col-8
+      @media (min-width: 1024px)
+        margin-left: $col-4
+        width: $col-4
 
-      h4
-        font-size: 2.4rem
-        line-height: 2.8rem
+      h3
+        // font-size: 3.2rem
+        // line-height: 2.8rem
 
-      h4:nth-child(n+4)
+      h3:nth-child(n+4)
         text-align: right
+
+    .poster-exposition-title
+      padding-top: 1.2rem
+      text-transform: uppercase

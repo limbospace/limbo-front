@@ -7,6 +7,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-htaccess',
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -37,9 +38,13 @@ module.exports = {
       options: {
         apiURL: process.env.API_URL || "http://localhost:1337",
         queryLimit: 1000,
-        contentTypes: [`exposition`]
+        contentTypes: [`exposition`, `info`]
       }
+    },
+    {
+      resolve: "gatsby-plugin-react-svg"
     }
   ],
+  
 
 }
